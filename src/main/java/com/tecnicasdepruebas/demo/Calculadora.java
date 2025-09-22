@@ -38,7 +38,11 @@ public class Calculadora {
             int a = lector.nextInt();
             System.out.print("Ingrese operando 2: ");
             int b = lector.nextInt();
-            return ((float)a/b);
+            if (b != 0) {
+                return ((float)a/b);
+            } else {
+                throw new IllegalArgumentException("División por cero");
+            }
         }
         return r;
     }

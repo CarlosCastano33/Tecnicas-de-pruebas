@@ -58,4 +58,28 @@ public class CalculatorTest {
         assertEquals(5.0, resultado);
     }
 
+    @Test
+    void testOperarDivisionPorCero() {
+        String input = "/\n5\n0\n"; // operador /, divisor en cero
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Calculadora calc = new Calculadora();
+
+        assertThrows(IllegalArgumentException.class, () -> calc.operar());
+    }
+
+    @Test
+    void testOperarOperadorInvalido() {
+        String input = "x\n1\n2\n"; // operador inválido
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Calculadora calc = new Calculadora();
+        float resultado = calc.operar();
+
+        assertEquals(0, resultado);
+    }
+
+
 }
